@@ -1,0 +1,18 @@
+{
+  "name": "lsq-xh-beta",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @lsq/web",
+    "lint": "npm run lint --workspace @lsq/web",
+    "typecheck": "npm run typecheck --workspace @lsq/web",
+    "test": "npm run test --workspace @lsq/web",
+    "build": "npm run build --workspace @lsq/web"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "packageManager": "npm@11.12.1"
+}
