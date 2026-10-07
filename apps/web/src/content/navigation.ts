@@ -1,9 +1,12 @@
 import type { NavigationItem } from "@/types/content";
 
+/** Mesmas seções do site atual da LSQ; o tour 360° fica dentro de Produção e na faixa do topo. */
 export const primaryNavigation: readonly NavigationItem[] = [
   { label: "Produtos", href: "/produtos" },
   { label: "Empresa", href: "/empresa" },
-  { label: "Fábrica 360", href: "/fabrica" },
+  { label: "Produção", href: "/producao" },
+  { label: "Certificados", href: "/certificados" },
+  { label: "Calculadora", href: "/calculadora" },
   { label: "Contato", href: "/contato" },
 ];
 

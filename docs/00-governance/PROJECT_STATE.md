@@ -18,6 +18,18 @@
 - Hero da Home: a peça se monta conforme a rolagem (121 quadros do vídeo do hero, canvas, carga progressiva, enquadramento próprio para celular).
 - Pendências: revisão de nomenclatura e família dos 127 produtos pelo cliente; fotos reais da fábrica; e-mail comercial (não exibido por falta de confirmação).
 
+## Atualização 2026-10-07 — ajustes pedidos pelo cliente
+
+- Tema claro alinhado à matriz: fundo branco-gelo azulado, superfícies brancas, grafite e vermelho LSQ; nenhum fundo preto (D-021).
+- Hero: texto à esquerda e a animação da montagem num palco emoldurado à direita (em cima no celular).
+- Categorias revisadas contra o site atual da LSQ; 23 produtos mudaram de família (D-022, `docs/CATEGORIAS.md`).
+- Famílias da Home com fotos reais de produto; imagens geradas restantes só em fábrica/empresa, com legenda "Imagem ilustrativa" (D-023).
+- LSquinho aparece aos poucos em 7 pontos do site (D-024).
+- Menu igual ao site atual: Produção (fotos reais + tour 360°), Certificados (16, títulos traduzidos), Calculadora de pressão (D-026, D-027).
+- Página de produto com a descrição técnica real dos 127 produtos e a subfamília do site atual; catálogo filtra por subfamília (D-025).
+- Contato com endereço, 2º telefone, e-mail, horário, razão social e CNPJ.
+- Pendente do cliente: fotos de produção em resolução maior, logo oficial LSQ Brasil (`content/site.ts` → `brand.logo`), fotos/vídeo do engate real para refazer a animação do hero, validação das 5 pendências de categoria.
+
 ## Conteúdo confirmado em uso
 
 - séries LSQ e referências ISO presentes no catálogo público atual;

@@ -8,7 +8,7 @@ export function ProductGallery({ images, alt }: { images: readonly string[]; alt
 
   return (
     <div className="grid gap-3 md:grid-cols-[4.5rem_1fr]">
-      <div className="relative order-1 aspect-[5/4] overflow-hidden rounded-md bg-[#e9ecee] md:order-2">
+      <div className="relative order-1 aspect-[5/4] overflow-hidden rounded-md border border-line bg-[#eef1f5] md:order-2">
         <Image alt={alt} className="object-cover" fetchPriority="high" fill loading="eager" sizes="(min-width: 1024px) 40rem, 100vw" src={images[active]} />
       </div>
       {images.length > 1 ? (
@@ -17,7 +17,7 @@ export function ProductGallery({ images, alt }: { images: readonly string[]; alt
             <button
               aria-label={`Ver foto ${index + 1} de ${images.length}`}
               aria-pressed={active === index}
-              className={`relative aspect-square w-16 shrink-0 overflow-hidden rounded-sm border-2 bg-[#e9ecee] transition-colors md:w-full ${active === index ? "border-signal-red" : "border-transparent opacity-70 hover:opacity-100"}`}
+              className={`relative aspect-square w-16 shrink-0 overflow-hidden rounded-sm border-2 bg-[#eef1f5] transition-colors md:w-full ${active === index ? "border-signal-red" : "border-line opacity-75 hover:opacity-100"}`}
               key={src}
               onClick={() => setActive(index)}
               type="button"

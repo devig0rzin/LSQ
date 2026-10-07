@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { Mascot } from "@/components/brand/mascot";
 import { ProductCard } from "@/components/catalog/product-card";
 import { Search, WhatsApp } from "@/components/ui/icons";
-import { categories, products } from "@/content/catalog";
+import { categories, products, subfamiliesOf, type CategorySlug } from "@/content/catalog";
 import { whatsappLink } from "@/content/site";
 import { filterProducts, sortProducts, type SortKey } from "@/lib/catalog";
 
@@ -16,6 +16,7 @@ export function CatalogBrowser() {
   const params = useSearchParams();
   const [query, setQuery] = useState(() => params.get("q") ?? "");
   const [category, setCategory] = useState(() => validCategory(params.get("categoria")));
+  const [subfamily, setSubfamily] = useState(() => params.get("familia") ?? "");
   const [sort, setSort] = useState<SortKey>("relevancia");
   const [visible, setVisible] = useState(PAGE_SIZE);
   const deferredQuery = useDeferredValue(query);
@@ -27,10 +28,14 @@ export function CatalogBrowser() {
     return map;
   }, [deferredQuery]);
 
-  const results = useMemo(
-    () => sortProducts(filterProducts(products, { category, query: deferredQuery }), sort),
-    [category, deferredQuery, sort],
-  );
+  const subfamilies = useMemo(() => (category === "all" ? [] : subfamiliesOf(category as CategorySlug)), [category]);
+  const activeSubfamily = subfamilies.some((item) => item.label === subfamily) ? subfamily : "";
+
+  const results = useMemo(() => {
+    const byCategory = filterProducts(products, { category, query: deferredQuery });
+    const bySubfamily = activeSubfamily ? byCategory.filter((product) => product.subfamily === activeSubfamily) : byCategory;
+    return sortProducts(bySubfamily, sort);
+  }, [category, deferredQuery, sort, activeSubfamily]);
 
   // Mantém a URL compartilhável (?categoria=&q=) sem recarregar a página.
   useEffect(() => {
@@ -39,11 +44,14 @@ export function CatalogBrowser() {
     else url.searchParams.set("categoria", category);
     if (deferredQuery.trim()) url.searchParams.set("q", deferredQuery.trim());
     else url.searchParams.delete("q");
+    if (activeSubfamily) url.searchParams.set("familia", activeSubfamily);
+    else url.searchParams.delete("familia");
     window.history.replaceState(null, "", url);
-  }, [category, deferredQuery]);
+  }, [category, deferredQuery, activeSubfamily]);
 
   function choose(slug: string) {
     setCategory(slug);
+    setSubfamily("");
     setVisible(PAGE_SIZE);
   }
 
@@ -61,9 +69,9 @@ export function CatalogBrowser() {
       >
         <label className="sr-only" htmlFor="catalog-search">Buscar no catálogo</label>
         <div className="relative min-w-0 flex-1">
-          <Search className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-lg text-white/45" />
+          <Search className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-lg text-steel" />
           <input
-            className="h-12 w-full rounded-sm border border-white/15 bg-panel pr-3 pl-11 text-sm text-white outline-none placeholder:text-white/40 focus:border-signal-red"
+            className="h-12 w-full rounded-sm border border-line-strong bg-surface pr-3 pl-11 text-sm text-ink outline-none placeholder:text-steel/80 focus:border-signal-red"
             id="catalog-search"
             onChange={(event) => {
               setQuery(event.target.value);
@@ -82,7 +90,7 @@ export function CatalogBrowser() {
         {options.map((item) => (
           <button
             aria-pressed={category === item.slug}
-            className={`shrink-0 rounded-full border px-3.5 py-2 text-[.8125rem] font-medium transition-colors ${category === item.slug ? "border-signal-red bg-signal-red text-white" : "border-white/15 text-white/75"}`}
+            className={`shrink-0 rounded-full border px-3.5 py-2 text-[.8125rem] font-medium transition-colors ${category === item.slug ? "border-signal-red bg-signal-red text-white" : "border-line-strong bg-surface text-graphite"}`}
             key={item.slug}
             onClick={() => choose(item.slug)}
             type="button"
@@ -93,40 +101,43 @@ export function CatalogBrowser() {
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[16rem_1fr]" id="resultados">
-        <aside className="ink-panel hidden h-fit rounded-md lg:sticky lg:top-24 lg:block">
-          <h2 className="border-b border-white/10 px-5 py-4 text-sm font-semibold">Categorias</h2>
+        <aside className="hidden h-fit overflow-hidden rounded-md border border-line bg-surface lg:sticky lg:top-32 lg:block">
+          <h2 className="border-b border-line px-5 py-4 text-sm font-semibold text-ink">Categorias</h2>
           <ul className="p-2">
             {options.map((item) => (
               <li key={item.slug}>
                 <button
                   aria-pressed={category === item.slug}
-                  className={`flex w-full items-center justify-between rounded-sm px-3 py-2.5 text-left text-[.8125rem] transition-colors ${category === item.slug ? "bg-signal-red/12 font-semibold text-white shadow-[inset_2px_0_0_var(--signal-red)]" : "text-white/65 hover:bg-white/5 hover:text-white"}`}
+                  className={`flex w-full items-center justify-between rounded-sm px-3 py-2.5 text-left text-[.8125rem] transition-colors ${category === item.slug ? "bg-signal-red-soft font-semibold text-ink shadow-[inset_3px_0_0_var(--signal-red)]" : "text-graphite hover:bg-page hover:text-ink"}`}
                   onClick={() => choose(item.slug)}
                   type="button"
                 >
                   {item.label}
-                  <span className="text-xs tabular-nums text-white/40">{counts.get(item.slug) ?? 0}</span>
+                  <span className="text-xs tabular-nums text-steel">{counts.get(item.slug) ?? 0}</span>
                 </button>
               </li>
             ))}
           </ul>
-          <div className="border-t border-white/10 p-5">
-            <p className="text-xs leading-5 text-white/50">Não encontrou a série? Envie o código ou uma foto da peça.</p>
-            <a className="mt-3 inline-flex items-center gap-2 text-[.8125rem] font-semibold text-white hover:text-signal-red" href={whatsappLink("Olá, não encontrei uma série no catálogo da LSQ.")} rel="noreferrer" target="_blank">
-              <WhatsApp className="text-[#3ccf6b]" /> Perguntar no WhatsApp
-            </a>
+          <div className="flex items-end gap-3 border-t border-line bg-page px-5 pt-5">
+            <div className="pb-5">
+              <p className="text-xs leading-5 text-steel">Não encontrou a série? Envie o código ou uma foto da peça.</p>
+              <a className="mt-3 inline-flex items-center gap-2 text-[.8125rem] font-semibold text-ink hover:text-signal-red-strong" href={whatsappLink("Olá, não encontrei uma série no catálogo da LSQ.")} rel="noreferrer" target="_blank">
+                <WhatsApp className="text-[#1faa53]" /> Perguntar no WhatsApp
+              </a>
+            </div>
+            <Mascot className="shrink-0" variant="peek" width={64} />
           </div>
         </aside>
 
         <section aria-live="polite">
-          <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-            <p className="text-sm text-white/65">
-              <strong className="font-semibold text-white">{results.length}</strong> {results.length === 1 ? "produto encontrado" : "produtos encontrados"}
+          <div className="flex items-center justify-between gap-4 border-b border-line pb-4">
+            <p className="text-sm text-steel">
+              <strong className="font-semibold text-ink">{results.length}</strong> {results.length === 1 ? "produto encontrado" : "produtos encontrados"}
             </p>
-            <label className="flex items-center gap-2 text-xs text-white/55">
+            <label className="flex items-center gap-2 text-xs text-steel">
               Ordenar por
               <select
-                className="h-9 rounded-sm border border-white/15 bg-panel px-2 text-[.8125rem] text-white outline-none focus:border-signal-red"
+                className="h-9 rounded-sm border border-line-strong bg-surface px-2 text-[.8125rem] text-ink outline-none focus:border-signal-red"
                 onChange={(event) => setSort(event.target.value as SortKey)}
                 value={sort}
               >
@@ -136,6 +147,25 @@ export function CatalogBrowser() {
               </select>
             </label>
           </div>
+
+          {subfamilies.length > 1 ? (
+            <div aria-label="Subfamílias" className="mt-4 flex flex-wrap gap-2" role="group">
+              {[{ label: "", count: 0 }, ...subfamilies].map((item) => (
+                <button
+                  aria-pressed={activeSubfamily === item.label}
+                  className={`rounded-sm border px-3 py-1.5 text-[.8125rem] transition-colors ${activeSubfamily === item.label ? "border-ink bg-ink text-white" : "border-line-strong bg-surface text-graphite hover:border-ink"}`}
+                  key={item.label || "todas"}
+                  onClick={() => {
+                    setSubfamily(item.label);
+                    setVisible(PAGE_SIZE);
+                  }}
+                  type="button"
+                >
+                  {item.label || "Todas"} {item.label ? <span className="opacity-60">({item.count})</span> : null}
+                </button>
+              ))}
+            </div>
+          ) : null}
 
           {results.length ? (
             <>
@@ -153,10 +183,10 @@ export function CatalogBrowser() {
               ) : null}
             </>
           ) : (
-            <div className="mt-6 rounded-md border border-dashed border-white/20 bg-panel p-10 text-center">
-              <Image alt="" className="mx-auto h-auto w-20" height={120} src="/brand/lsquinho-mascot-reference.png" width={120} />
+            <div className="mt-6 rounded-md border border-dashed border-line-strong bg-surface p-10 text-center">
+              <Mascot className="mx-auto" width={88} />
               <h2 className="mt-4 text-xl font-semibold">Nenhum produto nesta busca.</h2>
-              <p className="mt-2 text-sm text-white/60">Tente outro código ou envie a referência para o time comercial.</p>
+              <p className="mt-2 text-sm text-steel">Tente outro código ou envie a referência para o time comercial.</p>
               <div className="mt-5 flex flex-wrap justify-center gap-3">
                 <button className="outline-button" onClick={() => { setQuery(""); choose("all"); }} type="button">Limpar busca</button>
                 <a className="signal-button" href={whatsappLink(`Olá, procuro a série "${query}" no catálogo da LSQ.`)} rel="noreferrer" target="_blank">

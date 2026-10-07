@@ -1,5 +1,5 @@
 // Gerado a partir do site atual da LSQ (lsq-coupling.com.br) em 2026-10-06.
-// Nomes preservados do site atual; `category` foi inferida pelo nome e deve ser revisada.
+// Nomes preservados do site atual. `category` segue a categoria do site atual da LSQ (revisada em 2026-10-07; ver docs/CATEGORIAS.md).
 import type { ProductRecord } from "./catalog";
 
 export const productRecords: readonly ProductRecord[] = [
@@ -170,7 +170,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LAM",
     "name": "Engate rápido de desligamento único tipo americano",
     "sourceName": "LAM ENGATE RÁPIDO DE DESLIGAMENTO ÚNICO TIPO AMERICANO",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lam-engate-rapido-de-desligamento-unico-tipo-americano/01.webp",
       "/products/lam-engate-rapido-de-desligamento-unico-tipo-americano/02.webp",
@@ -185,7 +185,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LAO",
     "name": "Engate rápido tipo monomanual e semiautomática",
     "sourceName": "LAO ENGATE RÁPIDO TIPO MONOMANUAL E SEMIAUTOMÁTICA",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lao-engate-rapido-tipo-monomanual-e-semiautomatica/01.webp",
       "/products/lao-engate-rapido-tipo-monomanual-e-semiautomatica/02.webp",
@@ -230,7 +230,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-A",
     "name": "Engate rápido tipo siglehanded e semiautomático",
     "sourceName": "LSQ-A ENGATE RÁPIDO TIPO SIGLEHANDED E SEMIAUTOMÁTICO",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-a-engate-rapido-tipo-siglehanded-e-semiautomatico/01.webp",
       "/products/lsq-a-engate-rapido-tipo-siglehanded-e-semiautomatico/02.webp",
@@ -245,7 +245,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-AA",
     "name": "Engate rápido tipo monomanual e semiautomático",
     "sourceName": "LSQ-AA ENGATE RÁPIDO TIPO MONOMANUAL E SEMIAUTOMÁTICO",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-aa-engate-rapido-tipo-monomanual-e-semiautomatico/01.webp",
       "/products/lsq-aa-engate-rapido-tipo-monomanual-e-semiautomatico/02.webp",
@@ -260,7 +260,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-AB",
     "name": "Engate rápido tipo monomanual e semiautomático",
     "sourceName": "LSQ-AB ENGATE RÁPIDO TIPO MONOMANUAL E SEMIAUTOMÁTICO",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-ab-acoplamento-rapido-tipo-semiautomatico-e-de-mao-unica1/01.webp",
       "/products/lsq-ab-acoplamento-rapido-tipo-semiautomatico-e-de-mao-unica1/02.webp",
@@ -290,7 +290,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-CC20",
     "name": "Engate rápido hidráulico tipo fechado",
     "sourceName": "LSQ-CC20 ENGATE RÁPIDO HIDRÁULICO TIPO FECHADO",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-cc20-engate-rapido-hidraulico-tipo-fechado/01.webp",
       "/products/lsq-cc20-engate-rapido-hidraulico-tipo-fechado/02.webp",
@@ -335,7 +335,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-DG",
     "name": "Engate rápido tipo monomanual e semiautomático",
     "sourceName": "LSQ-DG ENGATE RÁPIDO TIPO MONOMANUAL E SEMIAUTOMÁTICO",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-dg-engate-rapido-tipo-monomanual-e-semiautomatico/01.webp",
       "/products/lsq-dg-engate-rapido-tipo-monomanual-e-semiautomatico/02.webp",
@@ -440,7 +440,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-K",
     "name": "Engate rápido para molde",
     "sourceName": "LSQ-K ENGATE RÁPIDO PARA MOLDE",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-k-engate-rapido-para-molde/01.webp",
       "/products/lsq-k-engate-rapido-para-molde/02.webp",
@@ -470,7 +470,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-PCVB1/2/3",
     "name": "Engate rápido sob pressão tipo ajustável",
     "sourceName": "LSQ-PCVB1/2/3 ENGATE RÁPIDO SOB PRESSÃO TIPO AJUSTÁVEL",
-    "category": "hidraulicos",
+    "category": "refrigeracao",
     "images": [
       "/products/lsq-pcvb1-2-3-engate-rapido-sob-pressao-tipo-ajustavel/01.webp"
     ],
@@ -539,7 +539,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-Q1",
     "name": "Engate rápido para molde (pequeno)",
     "sourceName": "LSQ-Q1 ENGATE RÁPIDO PARA MOLDE (PEQUENO)",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-q1-engate-rapido-para-molde-pequeno/01.webp",
       "/products/lsq-q1-engate-rapido-para-molde-pequeno/02.webp",
@@ -554,7 +554,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-Q2",
     "name": "Engate rápido para molde",
     "sourceName": "LSQ-Q2 ENGATE RÁPIDO PARA MOLDE",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-q2-engate-rapido-para-molde/01.webp",
       "/products/lsq-q2-engate-rapido-para-molde/02.webp",
@@ -569,7 +569,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-Q3",
     "name": "Engate rápido para molde",
     "sourceName": "LSQ-Q3 ENGATE RÁPIDO PARA MOLDE",
-    "category": "hidraulicos",
+    "category": "pneumaticos",
     "images": [
       "/products/lsq-q3-engate-rapido-para-molde/01.webp",
       "/products/lsq-q3-engate-rapido-para-molde/02.webp",
@@ -956,7 +956,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": null,
     "name": "Plugue metálico para engates rápidos da série LSQ-S1",
     "sourceName": "PLUGUE METÁLICO PARA ENGATES RÁPIDOS DA SÉRIE LSQ-S1",
-    "category": "hidraulicos",
+    "category": "acessorios",
     "images": [
       "/products/plugue-metalico-para-engates-rapidos-da-serie-lsq-s1/01.webp",
       "/products/plugue-metalico-para-engates-rapidos-da-serie-lsq-s1/02.webp",
@@ -1385,7 +1385,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-CV",
     "name": "Valvula de retenção hidráulica",
     "sourceName": "LSQ-CV VALVULA DE RETENÇÃO HIDRÁULICA",
-    "category": "valvulas",
+    "category": "hidraulicos",
     "images": [
       "/products/lsq-cv-valvula-de-retencao-hidraulica/01.webp",
       "/products/lsq-cv-valvula-de-retencao-hidraulica/02.webp"
@@ -1398,7 +1398,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-HDB",
     "name": "Válvula modular",
     "sourceName": "LSQ-HDB VÁLVULA MODULAR",
-    "category": "valvulas",
+    "category": "hidraulicos",
     "images": [
       "/products/lsq-hdb-valvula-modular/01.webp",
       "/products/lsq-hdb-valvula-modular/02.webp",
@@ -1413,7 +1413,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "SÉRIE",
     "name": "Da válvula de enchimento rápido",
     "sourceName": "Série da válvula de enchimento rápido",
-    "category": "valvulas",
+    "category": "refrigeracao",
     "images": [
       "/products/serie-da-valvula-de-enchimento-rapido/01.webp",
       "/products/serie-da-valvula-de-enchimento-rapido/02.webp",
@@ -1509,7 +1509,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "JTS",
     "name": "Junta do tubo de regulação da velocidade da série",
     "sourceName": "JTS JUNTA DO TUBO DE REGULAÇÃO DA VELOCIDADE DA SÉRIE",
-    "category": "acessorios",
+    "category": "encaixes",
     "images": [
       "/products/jts-junta-do-tubo-de-regulacao-da-velocidade-da-serie/01.webp",
       "/products/jts-junta-do-tubo-de-regulacao-da-velocidade-da-serie/02.webp",
@@ -1524,7 +1524,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "KNL",
     "name": "Junta de tubo tipo mãe com trava de porca recartilhada",
     "sourceName": "KNL JUNTA DE TUBO TIPO MÃE COM TRAVA DE PORCA RECARTILHADA",
-    "category": "acessorios",
+    "category": "encaixes",
     "images": [
       "/products/knl-junta-de-tubo-tipo-mae-com-trava-de-porca-recartilhada/01.webp",
       "/products/knl-junta-de-tubo-tipo-mae-com-trava-de-porca-recartilhada/02.webp",
@@ -1539,7 +1539,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "LSQ-NZK1/2/3",
     "name": "Ampliação interna",
     "sourceName": "LSQ-NZK1/2/3 AMPLIAÇÃO INTERNA",
-    "category": "acessorios",
+    "category": "refrigeracao",
     "images": [
       "/products/lsq-nzk1-2-3-ampliacao-interna/01.webp",
       "/products/lsq-nzk1-2-3-ampliacao-interna/02.webp",
@@ -1554,7 +1554,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "SÉRIE",
     "name": "Jsm de juntas de trava",
     "sourceName": "SÉRIE JSM DE JUNTAS DE TRAVA",
-    "category": "acessorios",
+    "category": "encaixes",
     "images": [
       "/products/serie-jsm-de-juntas-de-trava/01.webp",
       "/products/serie-jsm-de-juntas-de-trava/02.webp",
@@ -1569,7 +1569,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": "VBPDE",
     "name": "Echadura hidráulica dupla face",
     "sourceName": "VBPDE echadura hidráulica dupla face",
-    "category": "acessorios",
+    "category": "fechaduras",
     "images": [
       "/products/vbpde-echadura-hidraulica-dupla-face/01.webp"
     ],
@@ -1581,7 +1581,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": null,
     "name": "Junta de manômetro reta de série integrada",
     "sourceName": "Junta de manômetro reta de série integrada",
-    "category": "acessorios",
+    "category": "encaixes",
     "images": [
       "/products/junta-de-manometro-reta-de-serie-integrada/01.webp",
       "/products/junta-de-manometro-reta-de-serie-integrada/02.webp",
@@ -1596,7 +1596,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": null,
     "name": "Junta de tubo de combinação da série JZH",
     "sourceName": "JUNTA DE TUBO DE COMBINAÇÃO DA SÉRIE JZH",
-    "category": "acessorios",
+    "category": "encaixes",
     "images": [
       "/products/junta-de-tubo-de-combinacao-da-serie-jzh/01.webp",
       "/products/junta-de-tubo-de-combinacao-da-serie-jzh/02.webp",
@@ -1611,7 +1611,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": null,
     "name": "Junta de tubo de extrapolação da série JWR",
     "sourceName": "JUNTA DE TUBO DE EXTRAPOLAÇÃO DA SÉRIE JWR",
-    "category": "acessorios",
+    "category": "encaixes",
     "images": [
       "/products/junta-de-tubo-de-extrapolacao-da-serie-jwr/01.webp",
       "/products/junta-de-tubo-de-extrapolacao-da-serie-jwr/02.webp",
@@ -1626,7 +1626,7 @@ export const productRecords: readonly ProductRecord[] = [
     "code": null,
     "name": "Junta de tubo de inserção da série KH",
     "sourceName": "JUNTA DE TUBO DE INSERÇÃO DA SÉRIE KH",
-    "category": "acessorios",
+    "category": "encaixes",
     "images": [
       "/products/junta-de-tubo-de-insercao-da-serie-kh/01.webp",
       "/products/junta-de-tubo-de-insercao-da-serie-kh/02.webp",

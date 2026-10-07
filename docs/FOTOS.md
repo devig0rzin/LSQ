@@ -9,28 +9,37 @@ Para regenerar tudo a partir de um novo pacote `fotos-lsq` (script `baixar-fotos
 
     python3 tools/build-catalog.py <pasta fotos-lsq> apps/web
 
-## Imagens de ambientação (hero, famílias, fábrica)
+## Fotos das famílias (Home)
+Desde 07/10/2026 os cards de família usam fotos reais de produto: a `01.webp` do produto indicado em
+`categories[].cover` (`apps/web/src/content/catalog.ts`). Quando a peça fica pequena demais no quadro,
+`coverImage` aponta para uma composição em `apps/web/public/families/` (recortes das fotos reais, 1000×800, fundo branco).
+
+As imagens geradas `categoria-*.webp`, `macro-produto.webp` e `contato.webp` em `/public/media` não são mais usadas no site;
+ficaram no repositório apenas como histórico.
+
+## Logo e LSquinho
+- Logo: `brand.logo` em `apps/web/src/content/site.ts`. **Ainda é o logo da matriz** — trocar pelo arquivo oficial da LSQ Brasil
+  (de preferência SVG) e ajustar `width`/`height` para a proporção do arquivo.
+- LSquinho: `apps/web/public/brand/lsquinho.webp` (corpo inteiro) e `lsquinho-peek.webp` (cabeça e ombros), recortados do
+  arquivo bruto com fundo transparente.
+
+## Imagens de ambientação (fábrica e empresa)
 Ficam em `apps/web/public/media/`. Todas estão marcadas como **ilustrativas** em
 `apps/web/src/content/site.ts` (`illustrative: true`), e o site mostra a legenda "Imagem ilustrativa".
 
 | Arquivo | Onde aparece | Tamanho ideal |
 |---|---|---|
-| categoria-hidraulicos.webp, categoria-componentes.webp, categoria-valvulas.webp, macro-produto.webp | Cards de família (Home) e aba "Visão geral" do produto | 1200×1000 |
 | fabrica-exterior.webp | Home (faixa da fábrica), Empresa, Fábrica | 2400×1350 |
 | fabrica-interior.webp, controle-qualidade.webp, estoque.webp | Empresa e Fábrica | 2000×1250 |
-| contato.webp | Faixa "Precisa localizar uma série?" e página de contato | 2000×1100, escuro |
 
 **Antes de publicar para o cliente final:** troque as imagens de fábrica, qualidade e estoque por fotos reais
 (ou prints do tour 360°) e mude `illustrative` para `false` no `site.ts`.
 
-## Animação do hero (peça montando no scroll)
-Os quadros ficam em `apps/web/public/hero-sequence/desktop/` (1280×720) e `…/mobile/` (576×640, enquadramento que acompanha a peça).
-São 121 quadros tirados do vídeo de 10 s (1 a cada 2). Para trocar o vídeo:
+## Imagem do hero (Home)
+Desde 07/10/2026 o hero mostra uma imagem fixa do engate montado, recortada com fundo transparente:
+`apps/web/public/media/engate-hero.webp` (831×413). Para trocar, gere um PNG/WebP com fundo transparente na mesma
+orientação (peça na horizontal) e substitua o arquivo, ajustando `width`/`height` em `components/home/hero-product.tsx`.
+As legendas técnicas (Plugue, Sextavado, Luva serrilhada, Rosca de conexão) ficam em `CALLOUTS`, com a posição em % da imagem;
+se a nova imagem tiver outro enquadramento, ajuste esses números.
 
-    mkdir -p /tmp/frames
-    ffmpeg -i video.mp4 -vf "select='not(mod(n\,2))'" -vsync vfr /tmp/frames/%04d.png
-    ffmpeg -sseof -0.05 -i video.mp4 -frames:v 1 /tmp/frames/9999.png   # garante o último quadro
-    python3 tools/build-hero-frames.py /tmp/frames apps/web
-
-Se o novo vídeo tiver outra quantidade de quadros, ajuste `FRAME_COUNT` em
-`apps/web/src/components/home/hero-assembly.tsx`. A animação está marcada como "Animação ilustrativa".
+A animação antiga (121 quadros do vídeo, montagem no scroll) foi guardada em `assets/hero-sequence-antiga/`, fora do site.
