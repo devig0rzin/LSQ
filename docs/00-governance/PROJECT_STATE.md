@@ -9,6 +9,14 @@
 - A experiência 360 segue preservada como link externo seguro.
 - A UI pública foi refinada conforme o visual target aprovado: superfícies escuras, produto protagonista, grids técnicos, painéis claros para informação e CTA vermelho usado com precisão.
 
+## Atualização 2026-10-06 — redesign rumo ao mockup
+
+- Home, catálogo, produto, empresa, fábrica e contato reconstruídos no visual do mockup (superfícies escuras, fotografia em tela cheia, CTA vermelho/WhatsApp).
+- Catálogo com os 127 produtos do site atual em 8 famílias, busca sem acento, filtros com contagem, ordenação e "mostrar mais".
+- Página de produto com galeria (até 4 fotos), abas acessíveis e produtos da mesma família.
+- Imagens de ambientação marcadas como ilustrativas; ver `docs/FOTOS.md`.
+- Pendências: revisão de nomenclatura e família dos 127 produtos pelo cliente; fotos reais da fábrica; e-mail comercial (não exibido por falta de confirmação).
+
 ## Conteúdo confirmado em uso
 
 - séries LSQ e referências ISO presentes no catálogo público atual;

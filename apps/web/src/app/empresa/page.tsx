@@ -1,5 +1,81 @@
-import Image from "next/image";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { PublicShell } from "@/components/layout/public-shell";
-export default function CompanyPage() { return <PublicShell><div className="industrial-page min-h-screen"><section className="industrial-hero"><Container className="grid gap-8 py-16 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:py-24"><div><p className="eyebrow-red text-xs font-bold tracking-[.16em]">EMPRESA</p><h1 className="mt-4 text-4xl font-semibold tracking-[-.05em] md:text-6xl">Uma presença comercial para conversas técnicas objetivas.</h1><p className="mt-6 max-w-xl leading-8 text-white/65">A LSQ XH organiza o acesso a engates e componentes para fluidos para o mercado brasileiro.</p></div><div className="relative min-h-64 border border-white/15 bg-[#15181b]"><Image alt="Componente LSQ" className="object-contain p-8 opacity-85" fill sizes="(min-width: 1024px) 55vw, 95vw" src="/products/kze-ba.webp" /></div></Container></section><section className="bg-technical-white text-graphite"><Container className="grid gap-10 py-14 md:grid-cols-2 md:py-20"><div><p className="text-xs font-bold tracking-[.14em] text-signal-red">SOBRE A LSQ</p><h2 className="mt-3 text-3xl font-semibold tracking-[-.04em]">Catálogo, contexto e atendimento em uma experiência direta.</h2><p className="mt-5 leading-8 text-steel">Esta proposta reúne famílias de produtos, páginas de série e canais comerciais em uma estrutura clara, pensada para facilitar a consulta.</p></div><div className="border-l-4 border-signal-red bg-white p-7"><h2 className="text-2xl font-semibold">Conexão com a fábrica na China</h2><p className="mt-4 leading-7 text-steel">A experiência de fábrica 360 já divulgada pela LSQ é mantida como contexto visual para a visita comercial.</p><Link className="mt-6 inline-block border-b border-graphite pb-1 text-sm font-bold hover:text-signal-red" href="/fabrica">Conhecer fábrica 360 →</Link></div></Container></section></div></PublicShell>; }
+import { ArrowRight, Catalog, Headset, Layers, Tour360 } from "@/components/ui/icons";
+import { MediaImage } from "@/components/ui/media-image";
+import { categories, products } from "@/content/catalog";
+import { media } from "@/content/site";
+
+export const metadata: Metadata = { title: "Empresa", description: "Conheça a LSQ XH: engates rápidos, válvulas e componentes para fluidos." };
+
+const pillars = [
+  { icon: Catalog, title: "Catálogo técnico", text: `${products.length} séries organizadas em ${categories.length} famílias.` },
+  { icon: Tour360, title: "Fábrica na China", text: "Ambiente de produção aberto em tour 360°." },
+  { icon: Headset, title: "Atendimento direto", text: "WhatsApp e telefone com o time comercial." },
+  { icon: Layers, title: "CNPJ e CPF", text: "Atendimento para empresas e pessoas físicas." },
+];
+
+export default function CompanyPage() {
+  return (
+    <PublicShell>
+      <div className="ink-page">
+        <section className="photo-veil relative isolate flex min-h-[24rem] items-end overflow-hidden md:min-h-[28rem]">
+          <div className="absolute inset-0 -z-10">
+            <MediaImage asset={media.factoryExterior} eager hideTag sizes="100vw" />
+          </div>
+          <Container className="relative z-10 pb-10 md:pb-14">
+            <h1 className="text-4xl font-semibold tracking-[-.045em] md:text-6xl">Nossa empresa</h1>
+            <p className="mt-3 max-w-md text-white/75">Conexões para fluidos, da fábrica na China ao atendimento no Brasil.</p>
+          </Container>
+          <span className="illustrative-tag">Imagem ilustrativa</span>
+        </section>
+
+        <section className="bg-technical-white text-graphite">
+          <Container className="grid gap-10 py-14 md:grid-cols-[1fr_1.05fr] md:items-center md:py-20">
+            <div>
+              <h2 className="text-3xl font-semibold tracking-[-.035em] md:text-4xl">Sobre a LSQ</h2>
+              <p className="mt-5 max-w-lg leading-8 text-steel">
+                A LSQ XH trabalha com engates rápidos hidráulicos e pneumáticos, engates de refrigeração, válvulas de alta pressão e acessórios. O catálogo reúne as séries da fábrica na China, e o atendimento comercial é feito direto com o time no Brasil.
+              </p>
+              <p className="mt-4 max-w-lg leading-8 text-steel">
+                O objetivo é simples: você encontra a série, tira as dúvidas técnicas e recebe a cotação sem intermediários.
+              </p>
+              <Link className="signal-button mt-7" href="/fabrica">
+                Conheça nossa fábrica <ArrowRight className="icon-shift" />
+              </Link>
+            </div>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-md">
+              <MediaImage asset={media.factoryInterior} sizes="(min-width: 768px) 50vw, 100vw" />
+            </div>
+          </Container>
+          <div className="border-t border-[#dfe3e6]">
+            <Container className="grid grid-cols-2 gap-y-8 py-10 lg:grid-cols-4">
+              {pillars.map(({ icon: Icon, title, text }, index) => (
+                <div className={`flex gap-3 pr-4 ${index % 2 ? "border-l border-[#dfe3e6] pl-4 sm:pl-6" : ""} ${index === 2 ? "lg:border-l lg:pl-6" : ""}`} key={title}>
+                  <Icon className="mt-0.5 shrink-0 text-2xl text-signal-red" />
+                  <p className="text-sm leading-6">
+                    <span className="block font-semibold">{title}</span>
+                    <span className="text-steel">{text}</span>
+                  </p>
+                </div>
+              ))}
+            </Container>
+          </div>
+        </section>
+
+        <section>
+          <Container className="flex flex-wrap items-center justify-between gap-6 py-14">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-[-.03em] md:text-3xl">Comece pelo catálogo.</h2>
+              <p className="mt-2 text-white/65">Busque pelo código da série ou navegue pelas famílias.</p>
+            </div>
+            <Link className="signal-button" href="/produtos">
+              Ver produtos <ArrowRight className="icon-shift" />
+            </Link>
+          </Container>
+        </section>
+      </div>
+    </PublicShell>
+  );
+}
