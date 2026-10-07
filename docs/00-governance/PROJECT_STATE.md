@@ -15,6 +15,7 @@
 - Catálogo com os 127 produtos do site atual em 8 famílias, busca sem acento, filtros com contagem, ordenação e "mostrar mais".
 - Página de produto com galeria (até 4 fotos), abas acessíveis e produtos da mesma família.
 - Imagens de ambientação marcadas como ilustrativas; ver `docs/FOTOS.md`.
+- Hero da Home: a peça se monta conforme a rolagem (121 quadros do vídeo do hero, canvas, carga progressiva, enquadramento próprio para celular).
 - Pendências: revisão de nomenclatura e família dos 127 produtos pelo cliente; fotos reais da fábrica; e-mail comercial (não exibido por falta de confirmação).
 
 ## Conteúdo confirmado em uso

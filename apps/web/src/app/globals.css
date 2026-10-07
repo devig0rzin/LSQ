@@ -136,6 +136,70 @@
   padding: .2rem .5rem;
 }
 
+/* ── Hero: montagem da peça amarrada ao scroll ──────────────
+   A seção é alta; o bloco sticky fica preso enquanto ela passa.
+   Distância de rolagem = altura da seção - altura do sticky. */
+.hero-assembly { height: 280svh; }
+.hero-assembly__sticky { height: calc(100svh - 4.5rem); }
+
+/* Celular: vídeo em cima, texto embaixo */
+.hero-assembly__stage {
+  inset: 0 0 auto 0;
+  height: 60%;
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+}
+.hero-assembly__veil { background: linear-gradient(0deg, var(--ink) 38%, transparent 62%); }
+
+@media (min-width: 48rem) {
+  .hero-assembly { height: 320vh; }
+  /* Computador: vídeo nos 70% da direita, borda esquerda se dissolvendo */
+  .hero-assembly__stage {
+    inset: 0 0 0 30%;
+    height: auto;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+  }
+  .hero-assembly__veil {
+    background:
+      linear-gradient(90deg, var(--ink) 0%, rgb(11 12 14 / 70%) 34%, transparent 58%),
+      linear-gradient(0deg, rgb(11 12 14 / 55%) 0%, transparent 22%);
+  }
+}
+
+.hero-assembly__hint { transition: opacity 400ms ease-out, transform 400ms ease-out; }
+.hero-assembly__hint[data-hidden] { opacity: 0; transform: translate(-50%, 8px); }
+.hero-assembly__mouse {
+  position: relative;
+  width: 1.25rem;
+  height: 2rem;
+  border: 1.5px solid rgb(255 255 255 / 55%);
+  border-radius: 1rem;
+}
+.hero-assembly__mouse::after {
+  position: absolute;
+  top: .35rem;
+  left: 50%;
+  width: 2px;
+  height: .4rem;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: white;
+  content: "";
+  animation: hero-mouse 1.8s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+@keyframes hero-mouse {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  80%, 100% { opacity: 0; transform: translateY(.55rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Sem rolagem presa: mostra a peça montada (último quadro) */
+  .hero-assembly { height: auto; }
+  .hero-assembly__hint { display: none !important; }
+}
+
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 

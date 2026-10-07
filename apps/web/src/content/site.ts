@@ -26,7 +26,6 @@ export interface MediaAsset {
 
 /** Imagens de ambientação. Para trocar, substitua o arquivo em /public/media mantendo o nome. */
 export const media = {
-  hero: { src: "/media/hero.webp", alt: "Engate rápido hidráulico sobre bancada em ambiente industrial", illustrative: true },
   macro: { src: "/media/macro-produto.webp", alt: "Detalhe usinado de um engate rápido", illustrative: true },
   factoryExterior: { src: "/media/fabrica-exterior.webp", alt: "Fachada de unidade fabril", illustrative: true },
   factoryInterior: { src: "/media/fabrica-interior.webp", alt: "Linha de produção com centros de usinagem", illustrative: true },

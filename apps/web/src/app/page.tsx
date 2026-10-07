@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ProductCard } from "@/components/catalog/product-card";
 import { Container } from "@/components/layout/container";
 import { PublicShell } from "@/components/layout/public-shell";
+import { HeroAssembly } from "@/components/home/hero-assembly";
 import { ArrowRight, Catalog, Headset, Layers, Play, Tour360, WhatsApp } from "@/components/ui/icons";
 import { MediaImage } from "@/components/ui/media-image";
 import { categories, countByCategory, featuredProducts, products } from "@/content/catalog";
@@ -21,29 +22,27 @@ export default function HomePage() {
   return (
     <PublicShell>
       <div className="ink-page">
-        {/* HERO */}
-        <section className="photo-veil relative isolate flex min-h-[38rem] items-end overflow-hidden md:min-h-[44rem] md:items-center">
-          <div className="absolute inset-0 -z-10">
-            <MediaImage asset={media.hero} className="object-[70%_center] md:object-center" eager hideTag sizes="100vw" />
-          </div>
-          <Container className="relative z-10 pt-40 pb-12 md:py-24">
-            <h1 className="max-w-[13ch] text-[2.6rem] leading-[1.02] font-semibold tracking-[-.045em] text-balance sm:text-6xl lg:text-7xl">
-              Soluções em conexões <span className="text-signal-red">hidráulicas</span> para o seu negócio.
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-7 text-white/75">
-              Engates rápidos, válvulas e componentes para fluidos. Encontre a série no catálogo técnico e fale direto com o time comercial da LSQ.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link className="signal-button" href="/produtos">
-                Ver produtos <ArrowRight className="icon-shift" />
-              </Link>
-              <a className="outline-button" href={whatsappLink("Olá, vim pelo site da LSQ e quero falar com um especialista.")} rel="noreferrer" target="_blank">
-                <WhatsApp className="text-base" /> Falar com especialista
-              </a>
+        {/* HERO: a peça se monta conforme a rolagem */}
+        <HeroAssembly>
+          <Container className="flex h-full items-end pb-10 md:items-center md:pb-0">
+            <div>
+              <h1 className="max-w-[13ch] text-[2.4rem] leading-[1.02] font-semibold tracking-[-.045em] text-balance sm:text-6xl lg:text-7xl">
+                Soluções em conexões <span className="text-signal-red">hidráulicas</span> para o seu negócio.
+              </h1>
+              <p className="mt-5 max-w-md text-[.9375rem] leading-7 text-white/75 md:mt-6 md:text-base">
+                Engates rápidos, válvulas e componentes para fluidos. Encontre a série no catálogo técnico e fale direto com o time comercial da LSQ.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3 md:mt-8">
+                <Link className="signal-button" href="/produtos">
+                  Ver produtos <ArrowRight className="icon-shift" />
+                </Link>
+                <a className="outline-button" href={whatsappLink("Olá, vim pelo site da LSQ e quero falar com um especialista.")} rel="noreferrer" target="_blank">
+                  <WhatsApp className="text-base" /> Falar com especialista
+                </a>
+              </div>
             </div>
           </Container>
-          <span className="illustrative-tag">Imagem ilustrativa</span>
-        </section>
+        </HeroAssembly>
 
         {/* FAIXA DE FATOS */}
         <section aria-label="Resumo" className="border-y border-white/10 bg-panel">

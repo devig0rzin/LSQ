@@ -15,7 +15,6 @@ Ficam em `apps/web/public/media/`. Todas estão marcadas como **ilustrativas** e
 
 | Arquivo | Onde aparece | Tamanho ideal |
 |---|---|---|
-| hero.webp | Topo da Home | 2400×1350, produto à direita, fundo escuro |
 | categoria-hidraulicos.webp, categoria-componentes.webp, categoria-valvulas.webp, macro-produto.webp | Cards de família (Home) e aba "Visão geral" do produto | 1200×1000 |
 | fabrica-exterior.webp | Home (faixa da fábrica), Empresa, Fábrica | 2400×1350 |
 | fabrica-interior.webp, controle-qualidade.webp, estoque.webp | Empresa e Fábrica | 2000×1250 |
@@ -23,3 +22,15 @@ Ficam em `apps/web/public/media/`. Todas estão marcadas como **ilustrativas** e
 
 **Antes de publicar para o cliente final:** troque as imagens de fábrica, qualidade e estoque por fotos reais
 (ou prints do tour 360°) e mude `illustrative` para `false` no `site.ts`.
+
+## Animação do hero (peça montando no scroll)
+Os quadros ficam em `apps/web/public/hero-sequence/desktop/` (1280×720) e `…/mobile/` (576×640, enquadramento que acompanha a peça).
+São 121 quadros tirados do vídeo de 10 s (1 a cada 2). Para trocar o vídeo:
+
+    mkdir -p /tmp/frames
+    ffmpeg -i video.mp4 -vf "select='not(mod(n\,2))'" -vsync vfr /tmp/frames/%04d.png
+    ffmpeg -sseof -0.05 -i video.mp4 -frames:v 1 /tmp/frames/9999.png   # garante o último quadro
+    python3 tools/build-hero-frames.py /tmp/frames apps/web
+
+Se o novo vídeo tiver outra quantidade de quadros, ajuste `FRAME_COUNT` em
+`apps/web/src/components/home/hero-assembly.tsx`. A animação está marcada como "Animação ilustrativa".
